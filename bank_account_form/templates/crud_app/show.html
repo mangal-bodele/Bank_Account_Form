@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+        <title>Title</title>
+{% endblock %}
+{% block content %}
+        <table class="border border-5 col-8 m-auto mt-5 text-center">
+                <thead>
+                        <tr>
+                                <th>ID</th>
+                                <th>Account Holder Name</th>
+                                <th>Account Number</th>
+                                <th>Account Type</th>
+                                <th>Bank Name</th>
+                                <th>Branch Name</th>
+                                <th>Branch Code</th>
+                                <th>Address</th>
+                                <th>Date Of Birth</th>
+                                <th colspan="2">Action</th>
+                        </tr>
+
+                </thead>
+                <tbody>
+                        {% for account in accounts %}
+                                <tr>
+                                        <td>{{ account.id }}</td>
+                                        <td>{{ account.cust_name }}</td>
+                                        <td>{{ account.account_no }}</td>
+                                        <td>{{ account.account_type }}</td>
+                                        <td>{{ account.bank_name }}</td>
+                                        <td>{{ account.branch_name }}</td>
+                                        <td>{{ account.branch_code }}</td>
+                                        <td>{{ account.address }}</td>
+                                        <td>{{ account.dob }}</td>
+                                        <td>
+                                                <a href="{% url 'update_url' account.id %}">
+                                                        <button>Update</button>
+                                                </a>
+                                        </td>
+                                        <td>
+                                                <a href="{% url 'delete_url' account.id %}">
+                                                        <button>Delete</button>
+                                                </a>
+                                        </td>
+                                </tr>
+                        {% endfor %}
+                </tbody>
+        </table>
+{% endblock %}
